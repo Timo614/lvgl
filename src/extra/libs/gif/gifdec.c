@@ -143,16 +143,16 @@ static gd_GIF * gif_open(gd_GIF * gif_base)
         gif->canvas[i*4 + 0] = *(bgcolor + 2);
         gif->canvas[i*4 + 1] = *(bgcolor + 1);
         gif->canvas[i*4 + 2] = *(bgcolor + 0);
-        gif->canvas[i*4 + 3] = 0xff;
+        gif->canvas[i*4 + 3] = 0x00;
 #elif LV_COLOR_DEPTH == 16
         lv_color_t c = lv_color_make(*(bgcolor + 0), *(bgcolor + 1), *(bgcolor + 2));
         gif->canvas[i*3 + 0] = c.full & 0xff;
         gif->canvas[i*3 + 1] = (c.full >> 8) & 0xff;
-        gif->canvas[i*3 + 2] = 0xff;
+        gif->canvas[i*3 + 2] = 0x00;
 #elif LV_COLOR_DEPTH == 8
         lv_color_t c = lv_color_make(*(bgcolor + 0), *(bgcolor + 1), *(bgcolor + 2));
         gif->canvas[i*2 + 0] = c.full;
-        gif->canvas[i*2 + 1] = 0xff;
+        gif->canvas[i*2 + 1] = 0x00;
 #elif LV_COLOR_DEPTH == 1
         lv_color_t c = lv_color_make(*(bgcolor + 0), *(bgcolor + 1), *(bgcolor + 2));
         gif->canvas[i*2 + 0] = c.ch.red > 128 ? 1 : 0;
